@@ -13,21 +13,23 @@ from IPython.parallel import Client
 import pickle
 from time import time
 print pyart.__version__
-radar_in_dirs = [ '/data-in/radar/sgp/sgpcsaprsur/sur/', 
-                 '/data-in/radar/sgp/sgpcsaprrhi/rhi/', 
-                 '/data-in/radar/sgp/sgpcsaprvert/']
-names = ['CSAPR Volume', 'CSAPR RHI', 'CSAPR VPT']
-print "Done step 1"
+
+
+radar_in_dirs = [ 'XSE', 'XSW', 'XNW']
+names = ['XSAPR SE RHI', 'XSAPR SW RHI', 'XSAPR NW RHI']
+
 files = []
 for i in range(len(names)):
-    these_files = os.listdir(radar_in_dirs[i])
+    these_files = os.listdir('/data-in/radar/sgp/sgpxsaprhsrhi/')
     these_files.sort()
     fq_files = []
     for fl in these_files:
-        subdir_contents = os.listdir(radar_in_dirs[i]+ fl)
-        for final_file in subdir_contents:
-            fq_files.append(radar_in_dirs[i]+ fl + '/' + final_file)
+        if radar_in_dirs[i] in fl:
+            fq_files.append( '/data-in/radar/sgp/sgpxsaprhsrhi/' + fl)
     files.append(fq_files)
+
+
+print "Done step 1"
 
 print files[0][0]
 
@@ -72,7 +74,7 @@ for i in range(len(names)):
 
 
 print len(results)
-outfile = '/home/sc8/csapr.pickle'
+outfile = '/home/sc8/xsapr_rhi.pickle'
 fh = open(outfile, 'w')
 pickle.dump(data_dict, fh)
 fh.close()
