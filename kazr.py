@@ -71,7 +71,7 @@ for i in range(len(names)):
     data_dict.update({names[i]: results[i]})
 
 
-print len(results[0])
+print results[0]
 outfile = '/home/sc8/kazr.pickle'
 fh = open(outfile, 'w')
 pickle.dump(data_dict, fh)
