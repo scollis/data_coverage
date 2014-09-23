@@ -36,7 +36,7 @@ def get_date(filename):
         del radar
     except:
         #return start time and end time being the same
-        t = (num2date(0, 'seconds since 2000-01-01T00:00:00Z'), num2date(0, 'seconds since 2000-01-01T00:00:00Z'))
+        t = (netCDF4.num2date(0, 'seconds since 2000-01-01T00:00:00Z'), netCDF4.num2date(0, 'seconds since 2000-01-01T00:00:00Z'))
     return t
 
 
@@ -54,7 +54,6 @@ for i in range(len(files)):
     c = Client()
     dview = c[:]
     dview.block = False
-    dview.execute('import pyart')
     dview.execute('import netCDF4')
     print files[i]
     result = dview.map_async(get_date,files[i])
