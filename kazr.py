@@ -55,7 +55,7 @@ for i in range(len(files)):
     dview = c[:]
     dview.block = False
     dview.execute('import pyart')
-    dview.execute('from netCDF4 import num2date')
+    dview.execute('import netCDF')
     print files[i]
     result = dview.map_async(get_date,files[i])
     datestrs = result.get()
