@@ -30,8 +30,8 @@ print files[0][0]
 def get_date(filename):
     try:
         radar = netCDF4.Dataset(filename)
-        t = (netCDF4.num2date(test.variables['time_offset'][0], test.variables['time_offset'].units),
-             netCDF4.num2date(test.variables['time_offset'][-1], test.variables['time_offset'].units))
+        t = (netCDF4.num2date(radar.variables['time_offset'][0], radar.variables['time_offset'].units),
+             netCDF4.num2date(radar.variables['time_offset'][-1], radar.variables['time_offset'].units))
         radar.close()
         del radar
     except:
