@@ -22,7 +22,7 @@ for i in range(len(names)):
     these_files.sort()
     fq_files = []
     for fl in these_files:
-      fq_files.append(radar_in_dirs[i]+ fl + '/')
+      fq_files.append(radar_in_dirs[i]+ fl )
     files.append(fq_files)
 
 print files[0][0]
